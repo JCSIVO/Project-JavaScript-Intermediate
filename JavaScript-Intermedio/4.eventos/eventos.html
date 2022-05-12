@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Clase #3 sobre Eventos</title>
+</head>
+<body>
+    <h1>Eventos</h1>
+    <button id="cambiarFondo">Cambiar fondo</button>
+
+
+
+    <script type="text/javascript">
+        //muestra el evento al pulsar una tecla del teclado 
+        //document.addEventListener("keydown", function(evento){
+            //console.log(evento)
+        //});
+
+        var boton = document.getElementById('cambiarFondo');
+        //generamos una funcion para cambiar los colores con numeros aleatorios
+        function random(numeroMaximo){
+            return Math.round(Math.random()* numeroMaximo);
+
+        }
+        //otra forma seria cuando se pasael raton el por encima cambiando 
+        //click por mousemove
+       boton.addEventListener("click", function(evento){
+            //console.log("boton clicado")
+
+            //generacion de los numeros aleatorios
+            console.log(evento)
+            var randomColor = [
+                random(255),
+                random(255),
+                random(255),
+
+            ];
+            //Generamos la funcion para cambiar el fondo
+            document.body.style.backgroundColor = "rgb(" + randomColor[0] + "," + randomColor[1] + "," + randomColor[2]+")"
+
+        });
+
+        document.addEventListener('cambiarFondo', function(evento){
+            console.log(evento);
+            console.log(evento.detail);
+        });
+
+        var event = new CustomEvent('cambiarFondo', {'detail': 'Hola JCSIVO'});
+        
+        document.dispatchEvent(event);
+
+    </script>
+</body>
+</html>

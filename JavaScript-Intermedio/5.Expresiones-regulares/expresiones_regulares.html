@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Clase #1 sobre expresiones regulares</title>
+        <body>
+            <p>Expresiones Regulares</p>
+
+            <script type="text/javascript">
+                var banda = "AC/DC";
+                var texto = "hola mUndo";
+
+                //para buscar una barra dentro de nuestro String
+                var regExp = /\//g; // Nos devuelve un 2 por la posicion y si no hay  -1
+                console.log(banda.search(regExp));
+
+                //creamos nuestras // de expresion regular para buscar si el texto esta en minuscula
+                var regExp1 = /^[a-z]$/g;
+                console.log(texto.search(regExp1));
+                console.log(regExp1.test(texto));
+
+                var regExp2 = /hol./;
+                var texto2 = "hola"; // probar con holi, holaAA
+                //vat texto2 = "hosla" // dara -1  y false        
+
+                console.log(texto2.search(regExp2));
+                console.log(regExp2.test(texto2));
+
+                //ejemplo para ver si es singular o plural
+                var regExp3 = /s+$/;
+                var texto3 = "bienvenido"; // probar con bienvenidos      
+
+                console.log(texto3.search(regExp3));
+                console.log(regExp3.test(texto3));
+
+            </script>
+        </body>
+    </head>
+</html>

@@ -1,0 +1,56 @@
+<!-- Crear un script que rellene un elemento UL (lista) de HTML con un array de strings-->
+<html>
+    <head>
+        <title>Clase # 2 sobre DOM</title>
+        <style>
+            #mi_id_de_prueba{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Mi primera clase practica de DOM</p>
+
+        <ul id="todo_list">
+            <!-- Objetivo <li>Tirar la basura</li>-->
+
+
+        </ul>
+        <script type="text/javascript">
+
+            var parrafo = document.getElementsByTagName('p')
+
+            parrafo[0].style.color = 'blue';
+            parrafo[0].style.backgroundColor = 'yellow';
+        
+            //creamos nuestro array de tareas
+            var tareas = [
+                "Hacer la colada",
+                "Preparar la cena",
+                "Tirar la basura",
+            ];
+            var todoList = document.querySelector('#todo_list')
+            
+            for (var i = 0; i< tareas.length; i+=1){
+                var tarea = tareas[i];
+
+                var li = document.createElement('li');
+                
+                li.textContent = tarea;
+
+                //agregar una ID
+                li.id = 'elemento_' + i;
+
+                todoList.appendChild(li);
+            }
+            //elimina el nodo al pasar dos segundos
+            setTimeout(function(){
+                //eliminar un nodo
+            var elementoAEliminar = document.getElementById('elemento_2');
+            todoList.removeChild(elementoAEliminar);
+
+            }, 2000);
+            //console.log(todoList);     
+        </script>
+    </body>
+</html>

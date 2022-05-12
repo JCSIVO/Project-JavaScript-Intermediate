@@ -1,0 +1,89 @@
+<!--Continuando con el ejercicio anterior, debemos agregar un input
+y un boton a nuestro HTML para crear elementos en nuestra lista de TODO
+capturaremos el evento del boton  y crearemos un elemeto en la lista segun 
+el contenido del input-->
+
+
+<html>
+    <head>
+        <title>Mi primer ejercicio sobre Eventos</title>
+        <style>
+            #mi_id_de_prueba{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Mi primera clase practica de Eventos</p>
+        <input type="text" id="todoTitle">
+        <button id="agregarTarea">Agregar tarea</button>
+
+        <ul id="todo_list">
+            <!-- Objetivo <li>Tirar la basura</li>-->
+
+
+        </ul>
+        <script type="text/javascript">
+
+            var parrafo = document.getElementsByTagName('p')
+
+            parrafo[0].style.color = 'blue';
+            parrafo[0].style.backgroundColor = 'yellow';
+        
+            //creamos nuestro array de tareas
+            var tareas = [
+                "Hacer la colada",
+                "Preparar la cena",
+                "Tirar la basura",
+            ];
+            var todoList = document.querySelector('#todo_list')
+            
+
+            //creamos una funcion para quitar duplicidad del codigo
+            function agregarTarea(tarea, id){
+                var li = document.createElement('li');
+                li.textContent = tarea;
+                todoList.appendChild(li);
+                if(id){
+                    li.id = id;
+                }
+            }
+
+
+            for (var i = 0; i< tareas.length; i+=1){
+                var tarea = tareas[i];
+                agregarTarea(tarea, 'elemento_id' + i)
+
+                //var li = document.createElement('li');
+                
+                //li.textContent = tarea;
+
+                //agregar una ID
+                //li.id = 'elemento_' + i;
+
+                //todoList.appendChild(li);
+            }
+            //elimina el nodo al pasar dos segundos
+            setTimeout(function(){
+                //eliminar un nodo
+            var elementoAEliminar = document.getElementById('elemento_2');
+            todoList.removeChild(elementoAEliminar);
+
+            }, 2000);
+            //console.log(todoList); 
+            
+            var agregarBoton = document.getElementById('agregarTarea');
+            agregarBoton.addEventListener('click', function(){
+                var todoValue = document.getElementById('todoTitle').value;
+                //console.log(todoValue);
+                agregarTarea(todoValue);
+
+                //var li = document.createElement('li');
+                //li.textContent = todoValue;
+
+                //todoList.appendChild(li);  
+
+            });
+        </script>
+    </body>
+</html>
